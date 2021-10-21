@@ -1,0 +1,9 @@
+.container {
+  background-color: #cfe8fc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5% 20% 5% 20%;
+  box-sizing: border-box;
+}

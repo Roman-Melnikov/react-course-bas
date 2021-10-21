@@ -1,5 +1,12 @@
-import './Message.css';
+import "./Message.css";
 
-export const Message = ({text}) => {
-    return <p className='Message-txt'>{text}</p>
-}
+export const Message = ({ message }) => {
+  return (
+    <div className="message-wrp">
+      <div className={`message-${message.autor === "robot" ? "robot" : "autor"}`}>
+        {message.text}
+        <span className="signature">{message.autor}</span>
+      </div>
+    </div>
+  );
+};

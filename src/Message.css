@@ -1,10 +1,30 @@
-.Message-txt {
-    text-align: center;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 25px;
-    color: cornflowerblue;
+.message-wrp {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-autor {
+  width: 33%;
+  background-color: #ffff40;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+.message-robot {
+  width: 33%;
+  background-color: #40ffa0;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  align-self: flex-end;
+}
+
+.signature {
+  display: block;
+  text-align: right;
 }
