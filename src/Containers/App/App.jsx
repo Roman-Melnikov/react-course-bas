@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { Form } from "../../Components/Form";
-import "./style.css";
-// import "normalize.css";
 import faker from 'faker';
 import { MessageList } from "../MessageList";
 import { ChatList } from "../ChatList";
