@@ -51,11 +51,11 @@ export const App = () => {
 
   return (
     <Container sx={{ bgcolor: '#cfe8fc', height: '100vh' }}>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} rowSpacing={-3}>
         <Grid item xs={4} container="true" direction="column" justifyContent="center">
           <ChatList chatList={chatList}></ChatList>
         </Grid>
-        <Grid item xs={8} sx={{ height: '100vh' }} container="true" direction="column" justifyContent="space-between">
+        <Grid item xs={8} sx={{ height: '100vh', padding: '3vh 0' }} container="true" direction="column" justifyContent="space-between">
           <MessageList messageList={messageList}></MessageList>
           <Form
             changeFormValue={changeFormValue}

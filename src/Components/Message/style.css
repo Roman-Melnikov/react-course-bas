@@ -1,5 +1,5 @@
 .message-autor {
-  width: 33%;
+  max-width: 33%;
   background-color: #ffff40;
   border-radius: 25px;
   margin-bottom: 10px;
@@ -9,7 +9,8 @@
 }
 
 .message-robot {
-  width: 33%;
+  max-width: 33%;
+  width: 100%;
   background-color: #40ffa0;
   border-radius: 25px;
   margin-bottom: 10px;
