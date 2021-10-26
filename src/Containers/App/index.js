@@ -1,3 +1,3 @@
-import { App } from "./App.jsx";
+import { App } from "./App.jsx";//расширение не обязательно - коммент Егора
 
 export { App };

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from './Containers/App/App';
+import { App } from './Containers/App/App';// коммент Егора
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 

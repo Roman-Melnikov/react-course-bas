@@ -10,7 +10,7 @@ export const App = () => {
   const [chatList, setChatList] = useState([]);
   const [value, setValue] = useState("");
 
-  useEffect(() => {
+  useEffect(() => {//коммент Егора
     setChatList(() => {
       return (
         Array.from({ length: 10 }, () => {
@@ -27,7 +27,7 @@ export const App = () => {
   }, []);
 
   const submit = () => {
-    setMessageList([...messageList, { text: value, autor: "autor", id: faker.datatype.uuid() }]);
+    setMessageList([...messageList, { text: value, autor: "autor", id: faker.datatype.uuid() }]);//коммент Егора - "autor" можно вынести в константу и переиспользовать
     setValue("");
   };
 
@@ -64,6 +64,6 @@ export const App = () => {
           ></Form>
         </Grid>
       </Grid>
-    </Container>
+    </Container>//коммент Егора 56 стр
   );
 }

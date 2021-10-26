@@ -8,7 +8,7 @@ export const Form = ({ changeFormValue, value, submit }) => {
 
   useEffect(() => {
     ref.current?.focus();
-  })
+  })// коммент Егора
 
   return (
     <Box sx={{display: 'flex', height: '57px'}}>
