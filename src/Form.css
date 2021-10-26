@@ -1,0 +1,31 @@
+.form {
+    display: flex;
+    margin: 2% auto;
+    width: 33%;
+    height: 35px;
+}
+
+.input {
+    width: 75%;
+    border-radius: 25px 0 0 25px;
+    padding: 10px 0 10px 10px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+.input:focus {
+    outline: solid 1px gray;
+}
+
+.btn {
+    width: 25%;
+    border-radius: 0 25px 25px 0;
+    border: none;
+    background-color: aliceblue;
+}
+
+.btn:hover {
+    cursor: pointer;
+    filter: brightness(98%);
+}
