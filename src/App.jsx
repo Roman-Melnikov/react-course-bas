@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     if (messageList[messageList.length - 1]?.autor === "autor") {
       answerBot();
-      return () => clearTimeout(answerBot);
+      return () => clearTimeout(answerBot);// читать комментарий Егора
     }
   }, [messageList]);
 

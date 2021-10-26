@@ -2,10 +2,10 @@ import { Message } from "./Message";
 
 export const MessageList = ({ messageList }) => {
   return (
-    <div>
+    <div> 
       {messageList.map((message) => (
         <Message key={message.id}  message={message}></Message>
       ))}
-    </div>
+    </div>// можно было фрагментом - коммент Егора
   );
 };
