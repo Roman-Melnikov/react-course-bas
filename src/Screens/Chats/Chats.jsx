@@ -7,6 +7,7 @@ import { ChatList } from "../../Components/ChatList";
 import { AUTOR, INITIAL_STATE_CHAT } from "../../Constants";
 import { Redirect, useParams } from "react-router";
 import { Navigation } from "../../Components/Navigation";
+import { ROUTES } from "../../Components/Routing/constants";
 
 export const Chats = () => {
     const [messageList, setMessageList] = useState([]);
@@ -52,8 +53,8 @@ export const Chats = () => {
         }
     }, [messageList]);
 
-    if (!chatId || !params.id) {
-        return <Redirect to="/nochat" />
+    if (!chatId) {
+        return <Redirect to={ROUTES.NOCHAT} />
     }
 
     return (

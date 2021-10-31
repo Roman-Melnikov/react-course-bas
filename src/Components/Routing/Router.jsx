@@ -4,6 +4,7 @@ import { Profile } from "../../Screens/Profile";
 import { Main } from "../../Screens/Main";
 import { Chats } from "../../Screens/Chats";
 import { NoChat } from "../NoChat";
+import { NotFound } from "../NotFound";
 
 export const Router = () => {
     return (
@@ -21,8 +22,11 @@ export const Router = () => {
                 <Route exact path={`${ROUTES.CHATS}/:id`}>
                     <Chats />
                 </Route>
-                <Route exact path="/nochat">
+                <Route exact path={ROUTES.NOCHAT}>
                     <NoChat />
+                </Route>
+                <Route>
+                    <NotFound />
                 </Route>
             </Switch>
         </BrowserRouter>
