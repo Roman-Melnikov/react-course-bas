@@ -9,7 +9,7 @@ import  './style.css';
 
 export const Chat = ({ chat }) => {
   return (
-    <NavLink exact to={`${ROUTES.CHATS}/${chat.id}`} activeClassName="selected" className="chat-item">
+    <NavLink exact to={`${ROUTES.CHAT}/${chat.id}`} activeClassName="selected" className="chat-item">
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
           <Avatar src={chat.avatar}></Avatar>

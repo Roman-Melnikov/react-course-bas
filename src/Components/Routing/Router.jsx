@@ -2,9 +2,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ROUTES } from "./constants";
 import { Profile } from "../../Screens/Profile";
 import { Main } from "../../Screens/Main";
-import { Chats } from "../../Screens/Chats";
+import { Chat } from "../../Screens/Chat";
 import { NoChat } from "../NoChat";
 import { NotFound } from "../NotFound";
+import { Chats } from "../../Screens/Chats"
 
 export const Router = () => {
     return (
@@ -19,8 +20,8 @@ export const Router = () => {
                 <Route exact path={ROUTES.CHATS}>
                     <Chats />
                 </Route>
-                <Route exact path={`${ROUTES.CHATS}/:id`}>
-                    <Chats />
+                <Route exact path={`${ROUTES.CHAT}/:id`}>
+                    <Chat />
                 </Route>
                 <Route exact path={ROUTES.NOCHAT}>
                     <NoChat />
