@@ -23,9 +23,7 @@ export const Chat = () => {
     };
 
     useEffect(() => {
-        console.log(chatList, params);
         const chat = chatList.find((chat) => chat.id === params.id)
-        console.log(chat);
         if (chat) {
             setMessageList(chat.messageList);
         } else {
@@ -52,8 +50,8 @@ export const Chat = () => {
         let timerId;
         if (messageList[messageList.length - 1]?.autor === AUTOR) {
             timerId = answerBot();
-            return () => clearTimeout(timerId);
         }
+        return () => clearTimeout(timerId);
     }, [messageList]);
 
     if (!chatId) {

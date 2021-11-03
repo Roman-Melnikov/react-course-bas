@@ -1,0 +1,1 @@
+export const SHOW_NAME_ACTION = 'SHOW_NAME_ACTION';
