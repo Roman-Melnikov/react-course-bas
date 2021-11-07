@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Navigation } from "../../Components/Navigation";
-import { profileSelector } from "../../Store/profile/selectors";
-import { showNameAction } from "../../Store/profile/actions";
+import { profileSelector } from "../../Store/Profile/selectors";
+import { showNameAction } from "../../Store/Profile/actions";
 
 export const Profile = () => {
     const { name, showName } = useSelector(profileSelector);

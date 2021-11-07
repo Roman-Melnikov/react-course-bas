@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ROUTES } from "./constants";
-import { Profile } from "../../Screens/Profile";
-import { Main } from "../../Screens/Main";
-import { Chat } from "../../Screens/Chat";
-import { NoChat } from "../NoChat";
-import { NotFound } from "../NotFound";
-import { Chats } from "../../Screens/Chats"
+import { Profile } from "../Screens/Profile";
+import { Main } from "../Screens/Main";
+import { Chat } from "../Screens/Chat";
+import { NoChat } from "../Components/NoChat";
+import { NotFound } from "../Components/NotFound";
+import { Chats } from "../Screens/Chats"
 
 export const Router = () => {
     return (

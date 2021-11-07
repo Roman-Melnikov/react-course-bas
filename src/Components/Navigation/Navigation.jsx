@@ -1,6 +1,6 @@
 import { Breadcrumbs } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
-import { ROUTES } from "../Routing/constants";
+import { ROUTES } from "../../Routing/constants";
 import "./style.css"
 
 export const Navigation = () => {
