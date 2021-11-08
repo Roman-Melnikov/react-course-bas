@@ -2,7 +2,6 @@ import { Container, Grid } from "@material-ui/core"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { ChatList } from "../../Components/ChatList"
-import { Navigation } from "../../Components/Navigation"
 import { addChatAction } from "../../Store/Chats/actions"
 import { chatsSelector } from "../../Store/Chats/selectors"
 import { CreateChatModal } from "../../Components/CreateChatModal";
@@ -18,7 +17,6 @@ export const Chats = () => {
 
     return (
         <Container className="chats" >
-            <Navigation />
             <Grid container spacing={3} rowSpacing={-3}>
                 <Grid item xs={4} container="true" direction="column" justifyContent="center">
                     <ChatList chatList={chatList} />

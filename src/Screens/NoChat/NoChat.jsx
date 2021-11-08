@@ -1,9 +1,8 @@
 import { Container, Grid } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
 import { chatsSelector } from "../../Store/Chats/selectors"
-import { ChatList } from "../ChatList"
-import { CreateChatModal } from "../CreateChatModal"
-import { Navigation } from "../Navigation"
+import { ChatList } from "../../Components/ChatList"
+import { CreateChatModal } from "../../Components/CreateChatModal"
 import { addChatAction } from "../../Store/Chats/actions"
 
 export const NoChat = () => {
@@ -16,7 +15,6 @@ export const NoChat = () => {
 
     return (
         <Container sx={{ bgcolor: '#cfe8fc', height: '100vh' }}>
-            <Navigation />
             <Grid container spacing={3} rowSpacing={-3}>
                 <Grid item xs={4} container="true" direction="column" justifyContent="center">
                     <ChatList chatList={chatList} />
