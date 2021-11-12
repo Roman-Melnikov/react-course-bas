@@ -4,4 +4,5 @@ export const ROUTES = {
     CHATS: "/chats",
     CHAT: "/chat",
     NOCHAT: "/nochat",
+    CAT_RANDOM: "/cat",
 }

@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage'
 import { chatsReducer } from "./Chats";
 import { messagesReducer } from "./Messages";
 import { profileReducer } from "./Profile";
+import { catRandomReducer } from "./CatRandom/reducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   profile: profileReducer,
   chats: chatsReducer,
   messages: messagesReducer,
+  catRandom: catRandomReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

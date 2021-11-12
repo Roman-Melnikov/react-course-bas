@@ -7,6 +7,7 @@ import { NotFound } from "../Components/NotFound";
 import { Chats } from "../Screens/Chats"
 import { Navigation } from "../Components/Navigation";
 import { NoChat } from "../Screens/NoChat/NoChat";
+import { CatRandom } from "../Screens/CatRandom/CatRandom";
 
 export const Router = () => {
     return (
@@ -24,6 +25,9 @@ export const Router = () => {
                 </Route>
                 <Route exact path={`${ROUTES.CHAT}/:id`}>
                     <Chat />
+                </Route>
+                <Route exact path={ROUTES.CAT_RANDOM}>
+                    <CatRandom />
                 </Route>
                 <Route exact path={ROUTES.NOCHAT}>
                     <NoChat />
