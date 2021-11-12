@@ -1,6 +1,6 @@
 import faker from "faker";
-import { INITIAL_STATE_CHATS } from "../../../Constants";
-import { ADD_CHAT, REMOVE_CHAT } from "../constants/constants";
+import { INITIAL_STATE_CHATS } from "../../Constants/constants";
+import { ADD_CHAT, REMOVE_CHAT } from "../Chats";
 
 const initialState = {
   chatList: INITIAL_STATE_CHATS,
@@ -23,9 +23,7 @@ export const chatsReducer = (state = initialState, action) => {
     case REMOVE_CHAT:
       return {
         ...state,
-        chatList: [...state.chatList].filter(
-          (chat) => chat.id !== action.chatId
-        ),
+        chatList: state.chatList.filter((chat) => chat.id !== action.chatId),
       };
     default:
       return state;

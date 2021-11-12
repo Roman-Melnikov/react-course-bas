@@ -1,13 +1,13 @@
 import { List, Paper } from "@mui/material";
-import { Chat } from "../Chat";
+import { ChatListItem } from "../ChatListItem";
 import "./style.css"
 
-export const ChatList = ({ chatList, removeChat }) => {
+export const ChatList = ({ chatList }) => {
   return (
     <Paper>
       <List className="list">
         {chatList.map((chat) => (
-          <Chat key={chat.id} chat={chat} removeChat={removeChat}></Chat>
+          <ChatListItem key={chat.id} chat={chat}></ChatListItem>
         ))}
       </List>
     </Paper>

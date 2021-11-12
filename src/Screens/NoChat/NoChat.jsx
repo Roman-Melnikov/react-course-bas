@@ -1,17 +1,13 @@
 import { Container, Grid } from "@mui/material"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { chatsSelector } from "../../Store/Chats/selectors"
 import { ChatList } from "../../Components/ChatList"
 import { CreateChatModal } from "../../Components/CreateChatModal"
-import { addChatAction } from "../../Store/Chats/actions"
+import { useAddChat } from "../../Hooks"
 
 export const NoChat = () => {
     const chatList = useSelector(chatsSelector);
-    const dispatch = useDispatch();
-
-    const onAddChat = (newChatName) => {
-        newChatName && dispatch(addChatAction(newChatName));
-    };
+    const onAddChat = useAddChat();
 
     return (
         <Container sx={{ bgcolor: '#cfe8fc', height: '100vh' }}>

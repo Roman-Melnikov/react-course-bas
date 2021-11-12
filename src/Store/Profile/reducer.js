@@ -1,4 +1,4 @@
-import { SHOW_NAME_ACTION } from "../constants/constants";
+import { SHOW_NAME_ACTION } from "../Profile";
 
 const initialState = {
     showName: true,

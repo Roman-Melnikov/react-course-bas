@@ -1,19 +1,14 @@
 import { Container, Grid } from "@material-ui/core"
-import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { ChatList } from "../../Components/ChatList"
-import { addChatAction } from "../../Store/Chats/actions"
 import { chatsSelector } from "../../Store/Chats/selectors"
 import { CreateChatModal } from "../../Components/CreateChatModal";
 import "./style.css"
+import { useAddChat } from "../../Hooks"
 
 export const Chats = () => {
     const chatList = useSelector(chatsSelector);
-    const dispatch = useDispatch();
-
-    const onAddChat = (newChatName) => {
-        newChatName && dispatch(addChatAction(newChatName));
-    };
+    const onAddChat = useAddChat();
 
     return (
         <Container className="chats" >

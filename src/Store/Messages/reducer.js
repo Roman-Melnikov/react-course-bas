@@ -1,6 +1,6 @@
 import faker from "faker";
-import { INITIAL_STATE_MESSAGES } from "../../../Constants";
-import { ADD_MESSAGE, REMOVE_MESSAGES_CHAT } from "../constants";
+import { INITIAL_STATE_MESSAGES } from "../../Constants";
+import { ADD_MESSAGE, REMOVE_MESSAGES_CHAT } from "./constants";
 
 const initialState = {
   messageList: INITIAL_STATE_MESSAGES,
@@ -25,11 +25,11 @@ export const messagesReducer = (state = initialState, action) => {
         },
       };
     case REMOVE_MESSAGES_CHAT:
-      const currentState = state;
-      delete currentState.messageList[action.chatId];
+      const { [action.chatId]: messagesToDelete, ...restMessageList } =
+        state.messageList;
       return {
         ...state,
-        messageList: { ...currentState.messageList },
+        messageList: { ...restMessageList },
       };
     default:
       return state;

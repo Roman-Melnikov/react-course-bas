@@ -1,7 +1,7 @@
 import faker from "faker";
-import { AUTOR } from "../../../Constants";
-import { chatsSelector } from "../../Chats/selectors";
-import { ADD_MESSAGE, REMOVE_MESSAGES_CHAT } from "../constants";
+import { AUTOR } from "../../Constants";
+import { chatsSelector } from "../Chats/selectors";
+import { ADD_MESSAGE, REMOVE_MESSAGES_CHAT } from "./constants";
 
 export const addMessageAction = (text, autor, chatId) => {
   return {

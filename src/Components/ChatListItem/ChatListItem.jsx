@@ -4,18 +4,18 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Grid, ListItem } from "@mui/material";
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { ROUTES } from '../../Routing/constants';
 import { IconButton } from '@material-ui/core';
 import './style.css';
 import { useDispatch } from 'react-redux';
 import { removeChatAction } from '../../Store/Chats/actions';
-import { removeMessagesChatAction } from '../../Store/Messages/actions/actions';
+import { removeMessagesChatAction } from '../../Store/Messages';
 
-export const Chat = (props) => {
+export const ChatListItem = (props) => {
   const dispatch = useDispatch();
 
-  const removeChat = (chatId) => {
+  const removeChatListItem = (chatId) => {
     dispatch(removeChatAction(chatId));
     dispatch(removeMessagesChatAction(chatId));
   };
@@ -37,7 +37,7 @@ export const Chat = (props) => {
       </Grid>
       <Grid item xs={2}>
         <IconButton aria-label="delete" >
-          <DeleteIcon onClick={() => removeChat(props.chat.id)} />
+          <DeleteIcon onClick={() => removeChatListItem(props.chat.id)} />
         </IconButton>
       </Grid>
     </Grid>

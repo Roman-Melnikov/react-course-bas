@@ -1,4 +1,4 @@
-import { ADD_CHAT, REMOVE_CHAT } from "../constants";
+import { ADD_CHAT, REMOVE_CHAT } from "./constants";
 
 export const addChatAction = (name) => {
   return {

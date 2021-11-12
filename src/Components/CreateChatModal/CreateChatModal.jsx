@@ -1,11 +1,11 @@
 import { Button, Dialog, DialogContent, DialogTitle, TextField } from "@material-ui/core";
 import { DialogActions } from "@mui/material";
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 export const CreateChatModal = (props) => {
     const [open, setOpen] = useState(false);
     const [newChatName, setNewChatName] = useState("");
-    console.log(props);
+    const [disabled, setDisabled] = useState(true);
 
     const handleOpen = () => setOpen(!open);
 
@@ -15,12 +15,16 @@ export const CreateChatModal = (props) => {
     }, []);
 
     const transitNewChatName = () => {
-        props.onAddChat(newChatName)
+        props.onAddChat(newChatName);
         setNewChatName("");
         setOpen(false);
     };
 
     const handleChange = (e) => setNewChatName(e.target.value);
+
+    useEffect(() => {
+        setDisabled(!newChatName);
+    }, [newChatName])
 
     return (
         <>
@@ -44,7 +48,7 @@ export const CreateChatModal = (props) => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={transitNewChatName}>Submit</Button>
+                    <Button onClick={transitNewChatName} disabled={disabled}>Submit</Button>
                 </DialogActions>
             </Dialog>
         </>

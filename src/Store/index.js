@@ -2,9 +2,9 @@ import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'
-import { chatsReducer } from "./Chats/reducer";
-import { messagesReducer } from "./Messages/reducer/reducer";
-import { profileReducer } from "./Profile/reducer";
+import { chatsReducer } from "./Chats";
+import { messagesReducer } from "./Messages";
+import { profileReducer } from "./Profile";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

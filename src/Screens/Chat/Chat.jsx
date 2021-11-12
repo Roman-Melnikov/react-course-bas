@@ -10,13 +10,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { chatsSelector } from "../../Store/Chats/selectors";
 import { messagesSelector } from "../../Store/Messages/selectors";
 import { CreateChatModal } from "../../Components/CreateChatModal";
-import { addChatAction } from "../../Store/Chats/actions"
 import "./style.css"
-import { addMessageActionWithThunk } from "../../Store/Messages/actions/actions";
+import { addMessageActionWithThunk } from "../../Store/Messages";
+import { useAddChat } from "../../Hooks";
 
 export const Chat = () => {
     const [messageList, setMessageList] = useState([]);
     const [chatId, setChatId] = useState(true);
+    const onAddChat = useAddChat();
 
     const generalMessageList = useSelector(messagesSelector);
     const chatList = useSelector(chatsSelector);
@@ -41,10 +42,6 @@ export const Chat = () => {
     if (!chatId) {
         return <Redirect to={ROUTES.NOCHAT} />
     }
-
-    const onAddChat = (newChatName) => {
-        newChatName && dispatch(addChatAction(newChatName));
-    };
 
     return (
         <Container className="chat">
