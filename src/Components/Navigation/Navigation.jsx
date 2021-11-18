@@ -10,6 +10,8 @@ export const Navigation = () => {
       <NavLink exact activeClassName="selected" to={ROUTES.PROFILE}>Profile</NavLink>
       <NavLink exact activeClassName="selected" to={ROUTES.CHATS}>Chats</NavLink>
       <NavLink exact activeClassName="selected" to={ROUTES.CAT_RANDOM}>Cat_Random</NavLink>
+      <NavLink exact activeClassName="selected" to={ROUTES.SIGNUP}>Sign up</NavLink>
+      <NavLink exact activeClassName="selected" to={ROUTES.SIGNIN}>Sign in</NavLink>
     </Breadcrumbs>
   )
 }

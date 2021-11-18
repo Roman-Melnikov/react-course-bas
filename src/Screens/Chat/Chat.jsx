@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Form } from "../../Components/Form";
-import { Container, Grid } from "@mui/material";
 import { MessageList } from "../../Components/MessageList";
 import { ChatList } from "../../Components/ChatList";
 import { AUTOR } from "../../Constants";
@@ -10,9 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { chatsSelector } from "../../Store/Chats/selectors";
 import { messagesSelector } from "../../Store/Messages/selectors";
 import { CreateChatModal } from "../../Components/CreateChatModal";
-import "./style.css"
-import { addMessageActionWithThunk } from "../../Store/Messages";
+import { addMessageWithFirebase } from "../../Store/Messages";
 import { useAddChat } from "../../Hooks";
+import { Grid } from "@mui/material";
 
 export const Chat = () => {
     const [messageList, setMessageList] = useState([]);
@@ -27,7 +26,8 @@ export const Chat = () => {
 
     const submit = (value) => {
         const chat = chatList.find((chat) => chat.id === params.id);
-        dispatch(addMessageActionWithThunk(value, AUTOR, chat.id));
+        // dispatch(addMessageActionWithThunk(value, AUTOR, chat.id));
+        dispatch(addMessageWithFirebase(value, AUTOR, chat.id));
     };
 
     useEffect(() => {
@@ -44,17 +44,15 @@ export const Chat = () => {
     }
 
     return (
-        <Container className="chat">
-            <Grid container spacing={3} rowSpacing={-3}>
-                <Grid item xs={4} container="true" direction="column" justifyContent="center">
-                    <ChatList chatList={chatList} />
-                    <CreateChatModal onAddChat={onAddChat} />
-                </Grid>
-                <Grid item xs={8} sx={{ height: 'calc(100vh - 5vh)', padding: '3vh 0' }} container="true" direction="column" justifyContent="space-between">
-                    <MessageList messageList={messageList} />
-                    <Form submit={submit} />
-                </Grid>
+        <Grid container spacing={3} rowSpacing={-3}>
+            <Grid item xs={4} container="true" direction="column" justifyContent="center">
+                <ChatList chatList={chatList} />
+                <CreateChatModal onAddChat={onAddChat} />
             </Grid>
-        </Container>
+            <Grid item xs={8} sx={{ height: 'calc(100vh - 5vh)', padding: '3vh 0' }} container="true" direction="column" justifyContent="space-between">
+                <MessageList messageList={messageList} />
+                <Form submit={submit} />
+            </Grid>
+        </Grid>
     );
 }

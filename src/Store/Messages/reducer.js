@@ -1,4 +1,5 @@
 import faker from "faker";
+import { CHANGE_MESSAGES } from ".";
 import { INITIAL_STATE_MESSAGES } from "../../Constants";
 import { ADD_MESSAGE, REMOVE_MESSAGES_CHAT } from "./constants";
 
@@ -8,6 +9,11 @@ const initialState = {
 
 export const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_MESSAGES:
+        return {
+          ...state,
+          messageList:  [action.messages]
+        };
     case ADD_MESSAGE:
       const currentChatIdMessages = state.messageList[action.chatId] ?? [];
       return {

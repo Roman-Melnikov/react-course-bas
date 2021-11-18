@@ -1,17 +1,15 @@
-import { Container, Grid } from "@material-ui/core"
 import { useSelector } from "react-redux"
 import { ChatList } from "../../Components/ChatList"
 import { chatsSelector } from "../../Store/Chats/selectors"
 import { CreateChatModal } from "../../Components/CreateChatModal";
-import "./style.css"
 import { useAddChat } from "../../Hooks"
+import { Grid } from "@mui/material";
 
 export const Chats = () => {
     const chatList = useSelector(chatsSelector);
     const onAddChat = useAddChat();
 
     return (
-        <Container className="chats" >
             <Grid container spacing={3} rowSpacing={-3}>
                 <Grid item xs={4} container="true" direction="column" justifyContent="center">
                     <ChatList chatList={chatList} />
@@ -21,6 +19,5 @@ export const Chats = () => {
                     <span>Please select a chat</span>
                 </Grid>
             </Grid>
-        </Container>
     )
 }
