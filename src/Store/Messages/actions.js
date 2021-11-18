@@ -27,15 +27,14 @@ export const changeMessagesAction = (messages) => {
 };
 
 export const initMessageTracking = () => (dispatch) => {
-  firebase
-    .database()
-    .ref("messages")
-    .on("child_changed", (snapshot) => {
-      
-      const messages = snapshot.val();
-      console.log(messages);
-      dispatch(changeMessagesAction(messages));
-    });
+  // firebase
+  //   .database()
+  //   .ref("messages")
+  //   .on("child_changed", (snapshot) => {
+  //     const messages = snapshot.val();
+  //     console.log(messages);
+  //     dispatch(changeMessagesAction(messages));
+  //   });
   firebase
     .database()
     .ref("messages")
@@ -45,11 +44,13 @@ export const initMessageTracking = () => (dispatch) => {
       snapshot.forEach((snap) => {
         message = snap.val();
       });
-      dispatch(addMessageActionWithThunk([message.text], [message.autor], chatId));
+      console.log(message.text, message.autor);
+      dispatch(addMessageActionWithThunk(message.text, message.autor, chatId));
     });
 };
 
 export const addMessageAction = (text, autor, chatId) => {
+  console.log(text, autor, chatId);
   return {
     type: ADD_MESSAGE,
     text,

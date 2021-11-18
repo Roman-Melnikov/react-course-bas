@@ -15,6 +15,7 @@ export const messagesReducer = (state = initialState, action) => {
           messageList:  [action.messages]
         };
     case ADD_MESSAGE:
+      console.log(action.chatId, action.text, action.autor);
       const currentChatIdMessages = state.messageList[action.chatId] ?? [];
       return {
         ...state,
