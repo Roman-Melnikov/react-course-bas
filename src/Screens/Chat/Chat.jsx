@@ -26,7 +26,6 @@ export const Chat = () => {
 
     const submit = (value) => {
         const chat = chatList.find((chat) => chat.id === params.id);
-        // dispatch(addMessageActionWithThunk(value, AUTOR, chat.id));
         dispatch(addMessageWithFirebase(value, AUTOR, chat.id));
     };
 

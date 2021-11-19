@@ -1,4 +1,3 @@
-import faker from "faker";
 import { INITIAL_STATE_CHATS } from "../../Constants/constants";
 import { ADD_CHAT, REMOVE_CHAT } from "../Chats";
 
@@ -11,14 +10,7 @@ export const chatsReducer = (state = initialState, action) => {
     case ADD_CHAT:
       return {
         ...state,
-        chatList: [
-          ...state.chatList,
-          {
-            id: faker.datatype.uuid(),
-            name: action.name,
-            avatar: faker.image.avatar(),
-          },
-        ],
+        chatList: [...state.chatList, action.newChat],
       };
     case REMOVE_CHAT:
       return {

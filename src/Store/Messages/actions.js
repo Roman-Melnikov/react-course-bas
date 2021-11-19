@@ -27,30 +27,20 @@ export const changeMessagesAction = (messages) => {
 };
 
 export const initMessageTracking = () => (dispatch) => {
-  // firebase
-  //   .database()
-  //   .ref("messages")
-  //   .on("child_changed", (snapshot) => {
-  //     const messages = snapshot.val();
-  //     console.log(messages);
-  //     dispatch(changeMessagesAction(messages));
-  //   });
   firebase
     .database()
     .ref("messages")
-    .on("child_added", (snapshot) => {
+    .on("child_changed", (snapshot) => {
       const chatId = snapshot.key;
       let message = {};
       snapshot.forEach((snap) => {
         message = snap.val();
       });
-      console.log(message.text, message.autor);
       dispatch(addMessageActionWithThunk(message.text, message.autor, chatId));
     });
 };
 
 export const addMessageAction = (text, autor, chatId) => {
-  console.log(text, autor, chatId);
   return {
     type: ADD_MESSAGE,
     text,
@@ -67,7 +57,9 @@ export const addMessageActionWithThunk =
       const chat = chatList.find((chat) => chat.id === chatId);
       setTimeout(
         () =>
-          dispatch(addMessageAction(faker.lorem.text(), chat.name, chat.id)),
+          dispatch(
+            addMessageWithFirebase(faker.lorem.text(), chat.name, chat.id)
+          ),
         1500
       );
     }

@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
-import { addChatAction } from "../Store/Chats/actions";
+import { addChatWithFirebase } from "../Store/Chats";
 
 export const useAddChat = () => {
     const dispatch = useDispatch();
-    return (newChatName) => dispatch(addChatAction(newChatName));
+    return (newChatName) => dispatch(addChatWithFirebase(newChatName));
 }

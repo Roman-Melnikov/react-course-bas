@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Container } from "@mui/material";
 import { messagesSelector, setInitialMessagesWithFirebase } from "../Store/Messages";
 import "./style.css";
-import { chatsSelector, setInitialChatsWithFirebase } from "../Store/Chats";
+import { chatsSelector, initChatTracking, setInitialChatsWithFirebase } from "../Store/Chats";
 import { initMessageTracking } from "../Store/Messages/actions";
 
 export const Router = () => {
@@ -44,6 +44,10 @@ export const Router = () => {
 
     useEffect(() => {
         dispatch(initMessageTracking());
+    }, []);
+
+    useEffect(() => {
+        dispatch(initChatTracking());
     }, []);
 
     return (

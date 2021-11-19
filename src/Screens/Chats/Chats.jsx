@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { ChatList } from "../../Components/ChatList"
 import { chatsSelector } from "../../Store/Chats/selectors"
 import { CreateChatModal } from "../../Components/CreateChatModal";
