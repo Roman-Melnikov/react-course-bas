@@ -1,4 +1,3 @@
-import faker from "faker";
 import { CHANGE_MESSAGES } from ".";
 import { INITIAL_STATE_MESSAGES } from "../../Constants";
 import { ADD_MESSAGE, REMOVE_MESSAGES_CHAT } from "./constants";
@@ -25,7 +24,7 @@ export const messagesReducer = (state = initialState, action) => {
             {
               text: action.text,
               autor: action.autor,
-              id: faker.datatype.uuid(),
+              id: action.messageId,
             },
           ],
         },

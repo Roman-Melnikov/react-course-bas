@@ -9,14 +9,14 @@ import { ROUTES } from '../../Routing/constants';
 import { IconButton } from '@material-ui/core';
 import './style.css';
 import { useDispatch } from 'react-redux';
-import { removeChatAction } from '../../Store/Chats/actions';
+// import { removeChatAction } from '../../Store/Chats/actions';
 import { removeMessagesChatAction } from '../../Store/Messages';
 
 export const ChatListItem = (props) => {
   const dispatch = useDispatch();
 
   const removeChatListItem = (chatId) => {
-    dispatch(removeChatAction(chatId));
+    // dispatch(removeChatAction(chatId));
     dispatch(removeMessagesChatAction(chatId));
   };
 

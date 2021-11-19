@@ -9,6 +9,18 @@ export const setInitialChatsWithFirebase =
   async () => {
     firebase.database().ref("chats").set(chats);
   };
+  
+  export const initChatTracking = () => (dispatch, getState) => {
+  firebase
+    .database()
+    .ref("chats")
+    .on("child_added", (snapshot) => {
+      const chatList = chatsSelector(getState());
+      const newChat = snapshot.val();
+      const checkChat = chatList.find((chat) => chat.id === newChat.id);
+      !checkChat && dispatch({type: ADD_CHAT, newChat});
+    });
+};
 
 // export const addChatAction = (newChat) => {
 //   return {
@@ -17,12 +29,12 @@ export const setInitialChatsWithFirebase =
 //   };
 // };
 
-export const removeChatAction = (chatId) => {
-  return {
-    type: REMOVE_CHAT,
-    chatId,
-  };
-};
+// export const removeChatAction = (chatId) => {
+//   return {
+//     type: REMOVE_CHAT,
+//     chatId,
+//   };
+// };
 
 export const addChatWithFirebase = (name) => async () => {
   firebase.database().ref("chats").push({
@@ -32,12 +44,4 @@ export const addChatWithFirebase = (name) => async () => {
   });
 };
 
-export const initChatTracking = () => (dispatch) => {
-  firebase
-    .database()
-    .ref("chats")
-    .on("child_added", (snapshot) => {
-      const newChat = snapshot.val();
-      dispatch({type: ADD_CHAT, newChat});
-    });
-};
+
