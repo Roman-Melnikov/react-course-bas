@@ -44,9 +44,6 @@ export const Router = () => {
 
     useEffect(() => {
         dispatch(initMessageTracking());
-    }, []);
-
-    useEffect(() => {
         dispatch(initChatTracking());
     }, []);
 
