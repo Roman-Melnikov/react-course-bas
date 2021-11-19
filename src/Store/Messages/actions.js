@@ -20,13 +20,6 @@ export const addMessageWithFirebase = (value, autor, chatId) => async () => {
     .push({ text: value, autor, id: faker.datatype.uuid() });
 };
 
-export const changeMessagesAction = (messages) => {
-  return {
-    type: CHANGE_MESSAGES,
-    messages,
-  };
-};
-
 export const initMessageTracking = () => (dispatch, getState) => {
   firebase
     .database()
