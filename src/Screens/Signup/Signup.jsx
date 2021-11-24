@@ -5,14 +5,9 @@ import { ROUTES } from "../../Routing/constants";
 import { FormAuth } from "../../Components/FormAuth/FormAuth";
 
 export const Signup = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const handleEmailChange = (e) => { setEmail(e.target.value) };
-    const handlePasswordChange = (e) => { setPassword(e.target.value) };
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async (email, password) => {
         setError("");
         try {
             await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -24,7 +19,7 @@ export const Signup = () => {
     return (
         <>
             <p>Fill in the form below to register new account.</p>
-            <FormAuth email={email} password={password} handleEmailChange={handleEmailChange} handlePasswordChange={handlePasswordChange} handleSubmit={handleSubmit} />
+            <FormAuth handleSubmit={handleSubmit} />
             {error && <p>{error}</p>}
             <p>Already have an account? <Link to={ROUTES.SIGNIN}>Sign in</Link></p>
         </>

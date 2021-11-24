@@ -10,31 +10,25 @@ import { NoChat } from "../Screens/NoChat/NoChat";
 import { CatRandom } from "../Screens/CatRandom/CatRandom";
 import { Signup } from "../Screens/Signup/Signup";
 import { Signin } from "../Screens/Signin/Signin";
-import firebase from "firebase";
 import { PublicRoute } from "./PublicRoute";
 import { PrivateRoute } from "./PrivateRoute";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Container } from "@mui/material";
 import { messagesSelector, setInitialMessagesWithFirebase } from "../Store/Messages";
-import "./style.css";
 import { chatsSelector, initChatsTracking, setInitialChatsWithFirebase } from "../Store/Chats";
 import { initMessageTracking } from "../Store/Messages/actions";
+import { authedBoolWithFirebase, profileSelector } from "../Store/Profile";
+import "./style.css";
 
 export const Router = () => {
-    const [authed, setAuthed] = useState(false);
     const dispatch = useDispatch();
-    let messages = useSelector(messagesSelector);
-    let chats = useSelector(chatsSelector);
+    const { authed } = useSelector(profileSelector);
+    const messages = useSelector(messagesSelector);
+    const chats = useSelector(chatsSelector);
 
     useEffect(() => {
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                setAuthed(true);
-            } else {
-                setAuthed(false);
-            }
-        })
+        dispatch(authedBoolWithFirebase())
     }, []);
 
     useEffect(() => {

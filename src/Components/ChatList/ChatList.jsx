@@ -1,8 +1,9 @@
 import { List, Paper } from "@mui/material";
+import React from "react";
 import { ChatListItem } from "../ChatListItem";
 import "./style.css"
 
-export const ChatList = ({ chatList }) => {
+export const ChatList = React.memo(({ chatList }) => {
   return (
     <Paper>
       <List className="list">
@@ -12,4 +13,4 @@ export const ChatList = ({ chatList }) => {
       </List>
     </Paper>
   );
-};
+});

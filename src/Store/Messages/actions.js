@@ -1,8 +1,6 @@
 import faker from "faker";
 import firebase from "firebase";
-import { CHANGE_MESSAGES } from ".";
-import { AUTOR, INITIAL_STATE_MESSAGES } from "../../Constants";
-import { chatsSelector } from "../Chats/selectors";
+import { INITIAL_STATE_MESSAGES } from "../../Constants";
 import { ADD_MESSAGE, REMOVE_MESSAGES_CHAT } from "./constants";
 import { messagesSelector } from ".";
 
@@ -12,12 +10,25 @@ export const setInitialMessagesWithFirebase =
     firebase.database().ref("messages").set(messages);
   };
 
-export const addMessageWithFirebase = (value, autor, chatId) => async () => {
+export const addMessageWithFirebase = (value, autor, chat) => async () => {
   firebase
     .database()
     .ref("messages")
-    .child(chatId)
+    .child(chat.id)
     .push({ text: value, autor, id: faker.datatype.uuid() });
+  setTimeout(
+    () =>
+      firebase
+        .database()
+        .ref("messages")
+        .child(chat.id)
+        .push({
+          text: faker.lorem.text(),
+          autor: chat.name,
+          id: faker.datatype.uuid(),
+        }),
+    1500
+  );
 };
 
 export const initMessageTracking = () => (dispatch, getState) => {
@@ -30,7 +41,14 @@ export const initMessageTracking = () => (dispatch, getState) => {
       snapshot.forEach((snap) => {
         message = snap.val();
       });
-      dispatch(addMessageActionWithThunk(message.text, message.autor, chatId, message.Id));
+      dispatch(
+        addMessageActionWithThunk(
+          message.text,
+          message.autor,
+          chatId,
+          message.Id
+        )
+      );
     });
   firebase
     .database()
@@ -45,8 +63,19 @@ export const initMessageTracking = () => (dispatch, getState) => {
       });
       !checkMessage &&
         dispatch(
-          addMessageActionWithThunk(newMessage.text, newMessage.autor, chatId, newMessage.Id)
+          addMessageActionWithThunk(
+            newMessage.text,
+            newMessage.autor,
+            chatId,
+            newMessage.Id
+          )
         );
+    });
+  firebase
+    .database()
+    .ref("messages")
+    .on("child_removed", (snapshot) => {
+      dispatch(removeMessagesChatAction(snapshot.key));
     });
 };
 
@@ -61,19 +90,8 @@ export const addMessageAction = (text, autor, chatId, messageID) => {
 };
 
 export const addMessageActionWithThunk =
-  (text, autor, chatId, messageId) => (dispatch, getState) => {
+  (text, autor, chatId, messageId) => (dispatch) => {
     dispatch(addMessageAction(text, autor, chatId, messageId));
-    if (autor === AUTOR) {
-      const chatList = chatsSelector(getState());
-      const chat = chatList.find((chat) => chat.id === chatId);
-      setTimeout(
-        () =>
-          dispatch(
-            addMessageWithFirebase(faker.lorem.text(), chat.name, chat.id)
-          ),
-        1500
-      );
-    }
   };
 
 export const removeMessagesChatAction = (chatId) => {
@@ -81,4 +99,8 @@ export const removeMessagesChatAction = (chatId) => {
     type: REMOVE_MESSAGES_CHAT,
     chatId,
   };
+};
+
+export const removeMessagesWithFirebase = (chatId) => async () => {
+  firebase.database().ref("messages").child(chatId).remove();
 };

@@ -10,14 +10,14 @@ import { IconButton } from '@material-ui/core';
 import './style.css';
 import { useDispatch } from 'react-redux';
 import { removeChatWithFirebase } from '../../Store/Chats';
-import { removeMessagesChatAction } from '../../Store/Messages';
+import { removeMessagesWithFirebase } from '../../Store/Messages';
 
 export const ChatListItem = (props) => {
   const dispatch = useDispatch();
 
   const removeChatListItem = (chatId) => {
     dispatch(removeChatWithFirebase(chatId));
-    dispatch(removeMessagesChatAction(chatId));
+    dispatch(removeMessagesWithFirebase(chatId));
   };
 
   return (

@@ -1,4 +1,5 @@
 import { Button, CircularProgress } from "@material-ui/core";
+import { useCallback } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { catRandomSelector } from "../../Store/CatRandom";
@@ -9,9 +10,9 @@ export const CatRandom = () => {
     const { image: imageCat, loading, error } = useSelector(catRandomSelector);
     const dispatch = useDispatch();
 
-    const handleGetCat = () => {
+    const handleGetCat = useCallback(() => {
         dispatch(getCatRequest());
-    }
+    },[]);
 
     useEffect(() => dispatch(getCatRequest()), []);
 

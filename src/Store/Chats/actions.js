@@ -23,11 +23,8 @@ export const initChatsTracking = () => (dispatch, getState) => {
     .ref("chats")
     .on("child_added", (snapshot) => {
       const chatList = chatsSelector(getState());
-      let newChat = {};
-      snapshot.forEach((snap) => {
-        newChat = snap.val();
-      });
-      const checkChat = chatList.find((chat) => chat.id === newChat.id);
+      const newChat = { ...snapshot.val(), id: snapshot.key };
+      const checkChat = chatList.find((chat) => chat.id === snapshot.key);
       !checkChat && dispatch({ type: ADD_CHAT, newChat });
     });
   firebase
@@ -35,18 +32,13 @@ export const initChatsTracking = () => (dispatch, getState) => {
     .ref("chats")
     .on("child_removed", (snapshot) => {
       const chatList = chatsSelector(getState());
-      const removeChat = snapshot.val();
-      const checkChat = chatList.find((chat) => chat.id === removeChat.id);
-      checkChat && dispatch(removeChatAction(removeChat.id));
+      const checkChat = chatList.find((chat) => chat.id === snapshot.key);
+      checkChat && dispatch(removeChatAction(snapshot.key));
     });
 };
 
 export const addChatWithFirebase = (name) => async () => {
-  const id = faker.datatype.uuid();
-  firebase
-    .database()
-    .ref("chats")
-    .push({ [id]: { name, avatar: faker.image.avatar(), id } });
+  firebase.database().ref("chats").push({ name, avatar: faker.image.avatar() });
 };
 
 export const removeChatWithFirebase = (chatId) => async () => {

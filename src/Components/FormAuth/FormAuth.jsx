@@ -1,8 +1,15 @@
 import { Button, Grid, TextField } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
+import { useState } from "react";
 import "./style.css";
 
-export const FormAuth = ({ email, password, handleEmailChange, handlePasswordChange, handleSubmit }) => {
+export const FormAuth = ({ handleSubmit }) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleEmailChange = (e) => { setEmail(e.target.value) };
+    const handlePasswordChange = (e) => { setPassword(e.target.value) };
+
     return (
         <Grid container direction="column" alignItems="center">
             <Grid item>
@@ -25,7 +32,7 @@ export const FormAuth = ({ email, password, handleEmailChange, handlePasswordCha
                 />
             </Grid>
             <Grid item>
-                <Button onClick={handleSubmit} size="large" variant="contained" endIcon={<SendIcon />}>Send</Button>
+                <Button onClick={() => handleSubmit(email, password)} size="large" variant="contained" endIcon={<SendIcon />}>Send</Button>
             </Grid>
         </Grid>
     )

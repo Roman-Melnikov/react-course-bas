@@ -1,9 +1,10 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { ChatList } from "../../Components/ChatList"
 import { chatsSelector } from "../../Store/Chats/selectors"
 import { CreateChatModal } from "../../Components/CreateChatModal";
 import { useAddChat } from "../../Hooks"
 import { Grid } from "@mui/material";
+import React from "react";
 
 export const Chats = () => {
     const chatList = useSelector(chatsSelector);
@@ -20,4 +21,4 @@ export const Chats = () => {
                 </Grid>
             </Grid>
     )
-}
+};

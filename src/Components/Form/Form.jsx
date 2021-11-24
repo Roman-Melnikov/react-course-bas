@@ -2,8 +2,9 @@ import { Button, TextField } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Box } from "@mui/system";
+import React from "react";
 
-export const Form = ({ submit }) => {
+export const Form = React.memo(({ submit }) => {
   const ref = useRef(null);
   const [value, setValue] = useState("");
 
@@ -32,4 +33,4 @@ export const Form = ({ submit }) => {
       <Button onClick={transitValue} variant="contained" endIcon={<SendIcon />}></Button>
     </Box>
   );
-};
+});

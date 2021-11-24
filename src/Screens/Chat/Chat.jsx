@@ -12,6 +12,7 @@ import { CreateChatModal } from "../../Components/CreateChatModal";
 import { addMessageWithFirebase } from "../../Store/Messages";
 import { useAddChat } from "../../Hooks";
 import { Grid } from "@mui/material";
+import { useCallback } from "react";
 
 export const Chat = () => {
     const [messageList, setMessageList] = useState([]);
@@ -24,10 +25,10 @@ export const Chat = () => {
 
     const params = useParams();
 
-    const submit = (value) => {
+    const submit = useCallback((value) => {
         const chat = chatList.find((chat) => chat.id === params.id);
-        dispatch(addMessageWithFirebase(value, AUTOR, chat.id));
-    };
+        dispatch(addMessageWithFirebase(value, AUTOR, chat));
+    },[params]);
 
     useEffect(() => {
         const chat = chatList.find((chat) => chat.id === params.id)
