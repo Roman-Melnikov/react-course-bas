@@ -1,0 +1,12 @@
+.cat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    justify-content: space-between;
+}
+
+.cat-img {
+    object-fit: cover;
+    max-height: 90%;
+}
